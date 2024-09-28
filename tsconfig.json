@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.prod.json",
+  "compilerOptions": {
+    "paths": {
+      "@peak-align/okr": [
+        "projects/okr/src/public-api.ts"
+      ],
+      "@peak-align/okr/config": [
+        "projects/okr/config/src/public-api.ts"
+      ],
+      "@proxy": ["projects/okr/src/lib/proxy/index.ts"],
+      "@proxy/*": [
+        "projects/okr/src/lib/proxy/*"
+      ],
+      "@theme": [
+         "projects/theme/src/public-api.ts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="flex flex-col items-center justify-center h-screen w-full bg-primary-500">
+
+    <div class="flex flex-col w-[600px] bg-white rounded-3xl gap-6 shadow-sm min-h-10 p-12 justify-stretch items-start">
+
+        <div class="flex flex-col gap-10 items-start">
+            <img src="assets/images/logo/logo.svg" alt="logo" class="h-6 w-auto">
+            <h1 class="text-4xl font-medium text-black">Create an Account</h1>
+        </div>
+
+        <div [formGroup]="form" class="flex flex-col gap-3 w-full">
+            <theme-input required="true" formControlName="name" label="Name"
+                placeholder="Enter your name"></theme-input>
+
+
+            <theme-dropdown multiple="true" required="true" label="Role" placeholder="Select Role"
+                [options]="roleOptions">
+                <!-- Custom value template for selected value -->
+                <!-- <ng-template #valueTemplate let-selected let-options="options">
+                    <span>You selected: {{selected}}</span>
+                </ng-template> -->
+
+                <!-- Custom option template for options list -->
+                <!-- <ng-template #optionTemplate let-option>
+                    <span>{{ option?.key }} - {{ option?.value }}</span>
+                </ng-template> -->
+            </theme-dropdown>
+
+            <theme-input required="true" formControlName="companyName" label="Role"
+                placeholder="Enter your Role"></theme-input>
+
+        </div>
+
+    </div>
+
+
+</div>

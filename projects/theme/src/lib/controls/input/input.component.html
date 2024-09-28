@@ -1,0 +1,39 @@
+<!-- <div class="input-container">
+    <label *ngIf="label" [for]="label">{{ label }}</label>
+    <div class="input-wrapper">
+        <i *ngIf="startIcon" class="start-icon" [class]="startIcon"></i>
+        <input [type]="type" [id]="label" [placeholder]="placeholder" [required]="required" [disabled]="disabled"
+            [value]="value" (input)="onInput($event)">
+        <i *ngIf="endIcon" class="end-icon" [class]="endIcon"></i>
+    </div>
+    <span *ngIf="error" class="error-message">{{ error }}</span>
+</div> -->
+
+<div class="flex flex-col justify-stretch w-full gap-3">
+    <label *ngIf="label" class="flex flex-row gap-2 items-center text-sm font-normal text-black" [for]="label">{{ label
+        }}
+        <span *ngIf="required"
+            class="flex flex-row text-2xl font-medium items-center justify-center rounded-full w-4 h-4 bg-error-50 text-error-500">*</span>
+    </label>
+
+    <div
+        class="flex flex-row items-center overflow-hidden gap-2.5 p-[14px] h-12 border-neutral-2-200 border-0.5 rounded-lg">
+
+        <input [type]="type"
+            class="flex-1 outline-none w-full h-full placeholder:text-neutral-2-100 placeholder:text-sm" [id]="label"
+            [placeholder]="placeholder" [required]="required" [disabled]="disabled" [value]="value"
+            (input)="onInput($event)">
+
+        <div class="flex" *ngIf="icon">
+            icon
+        </div>
+    </div>
+
+    <div *ngIf="validationErrors" class="error-message">
+        <span *ngIf="validationErrors?.required">This field is required</span>
+        <span *ngIf="validationErrors?.minlength">Minimum length is not met</span>
+        <span *ngIf="validationErrors?.maxlength">Maximum length exceeded</span>
+        <span *ngIf="validationErrors?.pattern">Invalid pattern</span>
+    </div>
+
+</div>
