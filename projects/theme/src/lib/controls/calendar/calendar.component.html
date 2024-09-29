@@ -1,0 +1,37 @@
+<div class="bg-white shadow-lg rounded-lg p-4 w-64">
+    <div class="flex justify-between items-center mb-4">
+      <select 
+        [(ngModel)]="currentMonth" 
+        (ngModelChange)="onMonthChange()"
+        class="text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option *ngFor="let month of months; let i = index" [value]="i">
+          {{ month }}
+        </option>
+      </select>
+      <select 
+        [(ngModel)]="currentYear" 
+        (ngModelChange)="onYearChange()"
+        class="text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </option>
+      </select>
+    </div>
+    <div class="grid grid-cols-7 gap-1">
+      <div *ngFor="let day of ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']" class="text-center text-sm font-medium text-gray-700">
+        {{ day }}
+      </div>
+      <div *ngFor="let day of days" 
+           class="text-center p-1 text-sm rounded-full cursor-pointer"
+           [class.bg-blue-500]="isSelected(day)"
+           [class.text-white]="isSelected(day)"
+           [class.hover:bg-blue-100]="!isDisabled(day) && !isSelected(day)"
+           [class.text-gray-400]="isDisabled(day)"
+           [class.cursor-not-allowed]="isDisabled(day)"
+           (click)="selectDate(day)">
+        {{ day?.getDate() }}
+      </div>
+    </div>
+  </div>

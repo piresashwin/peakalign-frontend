@@ -1,0 +1,38 @@
+.calendar {
+    width: 300px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.days div {
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.days div:hover {
+    background: #f0f0f0;
+}
+
+.days div.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.days div.selected {
+    background: #007bff;
+    color: white;
+}

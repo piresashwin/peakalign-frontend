@@ -4,11 +4,23 @@ import { InputComponent } from './controls/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { DropdownComponent } from './controls/dropdown/dropdown.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { DatepickerComponent } from './controls/datepicker/datepicker.component';
+import { CalendarComponent } from './controls/calendar/calendar.component';
+import { ToggleComponent } from './controls/toggle/toggle.component';
+import { DrawerComponent } from './controls/drawer/drawer.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     InputComponent,
-    DropdownComponent
+    DropdownComponent,
+    DatepickerComponent,
+    CalendarComponent,
+    ToggleComponent,
+    DrawerComponent,
+    LoaderComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +29,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
   ],
   exports: [
     InputComponent,
-    DropdownComponent
+    DropdownComponent,
+    DatepickerComponent,
+    CalendarComponent,
+    ToggleComponent,
+    DrawerComponent,
+    LoaderComponent,
+    ModalComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
