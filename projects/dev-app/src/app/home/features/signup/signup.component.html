@@ -8,33 +8,37 @@
         </div>
 
         <div [formGroup]="form" class="flex flex-col gap-3 w-full">
-            <theme-input required="true" formControlName="name" label="Name"
+
+            <div class="flex flex-col">
+                <ng-container *ngFor="let error of errors">
+                    <p> {{error.message}} </p>
+                </ng-container>
+            </div>
+
+            <theme-input required="true" formControlName="name" label="Full Name"
                 placeholder="Enter your name"></theme-input>
 
-            <theme-datepicker></theme-datepicker>
+            <theme-input required="true" formControlName="companyName" label="Company Name"
+                placeholder="Enter your company name"></theme-input>
 
-            <theme-toggle></theme-toggle>
+            <theme-input required="true" formControlName="role" label="Job Title"
+                placeholder="Enter your Job Title"></theme-input>
 
+            <theme-input required="true" formControlName="email" label="Email"
+                placeholder="Enter your email"></theme-input>
 
-            <theme-dropdown multiple="true" required="true" label="Role" placeholder="Select Role"
-                [options]="roleOptions">
-                <!-- Custom value template for selected value -->
-                <!-- <ng-template #valueTemplate let-selected let-options="options">
-                    <span>You selected: {{selected}}</span>
-                </ng-template> -->
+            <theme-input type="password" required="true" formControlName="password" label="Password"
+                placeholder="Enter your password"></theme-input>
 
-                <!-- Custom option template for options list -->
-                <!-- <ng-template #optionTemplate let-option>
-                    <span>{{ option?.key }} - {{ option?.value }}</span>
-                </ng-template> -->
-            </theme-dropdown>
+            <button (click)="signup()">Signup</button>
 
-            <theme-input required="true" formControlName="companyName" label="Role"
-                placeholder="Enter your Role"></theme-input>
+            <p class="flex items-center justify-center text-sm text-black">Already have an account? &nbsp;<a
+                    class="cursor-pointer text-primary-500 font-medium" (click)="login()">Login</a></p>
 
         </div>
 
     </div>
+
 
 
 </div>

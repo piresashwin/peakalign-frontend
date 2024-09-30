@@ -19,10 +19,6 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://localhost:44381',
-      rootNamespace: 'PeakAlign.OKR',
-    },
-    OKR: {
       url: 'https://localhost:44382',
       rootNamespace: 'PeakAlign.OKR',
     },

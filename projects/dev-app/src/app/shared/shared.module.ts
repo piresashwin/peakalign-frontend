@@ -3,10 +3,15 @@ import { NgModule } from '@angular/core';
 import { ThemeSharedModule } from '@abp/ng.theme.shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThemeModule } from 'projects/theme/src/lib/theme.module';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent,
+    SidebarComponent
+  ],
   imports: [
     CoreModule,
     // ThemeSharedModule,
@@ -20,6 +25,8 @@ import { ThemeModule } from 'projects/theme/src/lib/theme.module';
     FormsModule,
     ReactiveFormsModule,
     ThemeModule,
+    HeaderComponent,
+    SidebarComponent,
   ],
   providers: [],
 })

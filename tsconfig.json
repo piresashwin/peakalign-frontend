@@ -8,12 +8,20 @@
       "@peak-align/okr/config": [
         "projects/okr/config/src/public-api.ts"
       ],
-      "@proxy": ["projects/okr/src/lib/proxy/index.ts"],
+      "@proxy": [
+        "projects/okr/src/lib/proxy/index.ts"
+      ],
       "@proxy/*": [
         "projects/okr/src/lib/proxy/*"
       ],
       "@theme": [
-         "projects/theme/src/public-api.ts"
+        "projects/theme/src/public-api.ts"
+      ],
+      "core": [
+        "./dist/core"
+      ],
+      "@core": [
+        "projects/core/src/public-api.ts"
       ]
     }
   }

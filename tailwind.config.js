@@ -21,13 +21,19 @@ module.exports = {
           800: '#042626',
           900: '#031D1D',
         },
+        'neutral-1': {
+          50: "#FDFEFE",
+          200: "#F8F8F9",
+          500: "#EFF0F1",
+          600:"#D9DADB",
+        },
         'neutral-2': {
           '100': "#B0B0B0",
           '200': "#8A8A8A",
         },
         error: {
           50: "#FDECEC",
-          500:"#EF4444",
+          500: "#EF4444",
         }
       },
       borderWidth: {

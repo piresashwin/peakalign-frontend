@@ -1,5 +1,6 @@
 import { AuthService } from '@abp/ng.core';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,8 @@ export class HomeComponent {
   /**
    *
    */
-  constructor(private authService: AuthService) {
-    if (!this.isLoggedIn) {
-      authService.navigateToLogin();
-    }
+  constructor(private router: Router) {
+    router.navigate(["/dashboard"]);
   }
 
-  get isLoggedIn() {
-    return this.authService.isAuthenticated;
-  }
 }

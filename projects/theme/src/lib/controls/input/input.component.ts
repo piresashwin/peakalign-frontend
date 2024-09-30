@@ -1,22 +1,13 @@
 import { Component, forwardRef, Input, OnInit, Self } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl, ValidationErrors, Validator } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'theme-input',
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => InputComponent),
-    multi: true,
-  },
-  {
-    provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => InputComponent),
-    multi: true,
-  }]
+
 })
-export class InputComponent implements ControlValueAccessor, Validator {
+export class InputComponent implements ControlValueAccessor {
 
   @Input() label: string = '';
   @Input() type: string = 'text';
@@ -32,9 +23,21 @@ export class InputComponent implements ControlValueAccessor, Validator {
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  validationErrors: ValidationErrors;
-
   isInvalid = false;
+
+  get validationErrors() {
+    return this.control.control.errors;
+  }
+
+
+  /**
+   *
+   */
+  constructor(@Self() protected control: NgControl) {
+    control.valueAccessor = this;
+
+    
+  }
 
   writeValue(obj: any): void {
     this.value = obj;
@@ -46,11 +49,6 @@ export class InputComponent implements ControlValueAccessor, Validator {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  validate(control: AbstractControl): ValidationErrors | null {
-    this.validationErrors = control.errors;
-    return control.errors;
   }
 
   onInput(event: Event): void {

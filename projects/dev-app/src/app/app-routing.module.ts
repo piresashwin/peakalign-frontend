@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
 
 const routes: Routes = [
   {
@@ -7,7 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
-    path: 'app',
+    path: '',
+    component: AppLayoutComponent,
     loadChildren: () =>
       import('@peak-align/okr').then(m => m.OKRModule.forLazy()),
   },
