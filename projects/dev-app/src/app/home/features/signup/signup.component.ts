@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignupDto, SignupService } from '@proxy/accounts';
-import { DialogService } from 'projects/theme/src/lib/services/dialog.service';
 
 @Component({
   selector: 'app-signup',

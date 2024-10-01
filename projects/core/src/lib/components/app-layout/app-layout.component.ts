@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app-layout.component.html',
   styleUrl: './app-layout.component.scss'
 })
-export class AppLayoutComponent  implements OnInit{
+export class AppLayoutComponent implements OnInit {
   ngOnInit(): void {
-    
+
   }
 
 

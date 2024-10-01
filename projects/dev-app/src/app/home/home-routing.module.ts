@@ -4,8 +4,8 @@ import { HomeComponent } from './home.component';
 import { SignupComponent } from './features/signup/signup.component';
 import { SignupSuccessComponent } from './features/signup-success/signup-success.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { AppLayoutComponent } from '../app-layout/app-layout.component';
 import { authGuard } from '@abp/ng.core';
+import { AppLayoutComponent } from '@core';
 
 const routes: Routes = [
   {

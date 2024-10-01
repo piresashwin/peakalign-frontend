@@ -1,7 +1,7 @@
 import { AuthService, ConfigStateService } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
 import { CompanyDto, CompanyService } from '@proxy/setup';
-import { BehaviorSubject, combineLatest, filter, first, map, of, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, first, map, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +28,7 @@ export class UserDataService {
               return [user, tenant, company];
             }))
         }),
-        map(([user, tenant, company]) => {
-          debugger
-
+        tap(([user, tenant, company]) => {
           const obj = {
             user,
             tenant,

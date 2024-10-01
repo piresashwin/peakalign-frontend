@@ -9,9 +9,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTE_PROVIDER } from './route.provider';
-import { AppLayoutComponent } from './app-layout/app-layout.component';
-import { SharedModule } from './shared/shared.module';
-import { provideUserData } from '@core';
+import { PeakCoreModule } from '@core';
 
 @NgModule({
   imports: [
@@ -19,9 +17,8 @@ import { provideUserData } from '@core';
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    // ThemeSharedModule,
     OKRConfigModule.forRoot(),
-    SharedModule,
+    PeakCoreModule,
   ],
   providers: [
     APP_ROUTE_PROVIDER,
@@ -34,10 +31,9 @@ import { provideUserData } from '@core';
       })
     ),
     provideAbpOAuth(),
-    // provideAbpThemeShared(),
-    provideUserData()
+    // provideUserData()
   ],
-  declarations: [AppComponent, AppLayoutComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

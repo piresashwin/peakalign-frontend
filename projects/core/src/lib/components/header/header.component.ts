@@ -31,9 +31,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadUserData();
   }
 
-  logout() { debugger
+  private loadUserData() {
+    const obs$ = this.userDataService.loadUserData();
+    this.subscriptions.addOne(obs$, () => { });
+  }
+
+  logout() {
     this.oAuthService.revokeTokenAndLogout();
   }
 
