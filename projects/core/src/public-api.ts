@@ -8,3 +8,4 @@ export * from './lib/data-access/services/userProvider'
 export * from './lib/components/app-layout/app-layout.component'
 export * from './lib/components/header/header.component'
 export * from './lib/components/sidebar/sidebar.component'
+export * from './lib/tokens/route.token';

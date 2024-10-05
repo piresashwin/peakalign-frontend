@@ -5,6 +5,9 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { AppLayoutComponent } from "./components/app-layout/app-layout.component";
 import { ThemeModule } from "@theme";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CdkMenuModule } from '@angular/cdk/menu';
+import { RouterModule } from "@angular/router";
+
 
 @NgModule({
     declarations: [
@@ -16,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         CommonModule,
         ThemeModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CdkMenuModule,
+        RouterModule
     ],
     exports: [
         HeaderComponent,
@@ -24,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         AppLayoutComponent,
         ThemeModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CdkMenuModule,
+        RouterModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

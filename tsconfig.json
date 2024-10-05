@@ -22,6 +22,15 @@
       ],
       "@core": [
         "projects/core/src/public-api.ts"
+      ],
+      "employees": [
+        "./dist/employees"
+      ],
+      "performance": [
+        "./dist/performance"
+      ],
+      "settings": [
+        "./dist/settings"
       ]
     }
   }

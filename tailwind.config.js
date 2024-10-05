@@ -21,11 +21,14 @@ module.exports = {
           800: '#042626',
           900: '#031D1D',
         },
+        secondary: {
+          50: "#E8F5F4"
+        },
         'neutral-1': {
           50: "#FDFEFE",
           200: "#F8F8F9",
           500: "#EFF0F1",
-          600:"#D9DADB",
+          600: "#D9DADB",
         },
         'neutral-2': {
           '100': "#B0B0B0",

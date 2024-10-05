@@ -31,7 +31,6 @@ import { PeakCoreModule } from '@core';
       })
     ),
     provideAbpOAuth(),
-    // provideUserData()
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

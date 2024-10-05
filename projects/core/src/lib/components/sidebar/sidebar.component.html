@@ -1,6 +1,89 @@
-<div class="relative flex flex-col w-72 bg-neutral-1-200 h-screen border-r-neutral-1-500 border-r">
+<div class="relative flex flex-col w-72 bg-neutral-1-200 h-screen border-r-neutral-1-500 border-r px-6 gap-8 pt-8">
 
-    <span class="absolute -right-3 top-5 rounded-full w-7 h-7 border-[0.5px] border-neutral-1-600 bg-neutral-1-50"></span>
+    <button
+        class="absolute -right-3 top-8 rounded-full w-7 h-7 border-[0.5px] border-neutral-1-600 bg-neutral-1-50 items-center justify-center flex">
+        <img src="/assets/images/icons/arrow-left.svg" class="w-4 h-4">
+    </button>
+
+    <ng-content></ng-content>
+
+    <img src="/assets/images/logo/logo.svg" class="h-8 w-auto flex self-start">
+
+    <button [cdkMenuTriggerFor]="teamMenu"
+        class="flex flex-row h-16 rounded-xl bg-neutral-1-200 border border-neutral-1-600 items-center p-3  gap-2">
+
+        <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
+            <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
+        </span>
+
+        <span class="flex flex-grow">
+            2 Teams Managed
+        </span>
+
+        <span class="">
+            <span class="flex w-4 h-4 items-center justify-center">
+                <img src="/assets/images/icons/arrow-down.svg">
+            </span>
+        </span>
+
+    </button>
+
+    <ng-container *ngFor="let menu of menus">
+
+        <div class="flex flex-col items-stretch gap-3">
+
+            <h1 class="text-black">{{ menu.title }}</h1>
+
+            <div class="flex flex-col items-stretch gap-0.5">
+
+                <ng-container *ngFor="let item of menu.items">
+                    <a routerLink="{{item.url}}" class="cursor-pointer flex flex-row p-1 items-center h-12 rounded-xl"
+                        routerLinkActive="bg-secondary-50">
+                        <span class="flex w-10 h-10 items-center justify-center">
+                            <img src="/assets/images/icons/{{item.icon}}" class="w-5 h-5">
+                        </span>
+                        <span class="text-sm">{{item.title}}</span>
+                    </a>
+                </ng-container>
+
+
+
+            </div>
+
+
+        </div>
+
+    </ng-container>
+
+
 
 
 </div>
+
+<ng-template #teamMenu>
+    <div class="flex flex-col w-full p-3  bg-neutral-1-200  border border-neutral-1-600 shadow-md overflow-y-auto max-h-28 rounded-xl gap-2 mt-2"
+        cdkMenu>
+
+        <button class="flex flex-row gap-2 h-9 items-center">
+            <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
+                <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
+            </span>
+
+            <span class="flex flex-grow">
+                Human Resources
+            </span>
+
+        </button>
+
+        <button class="flex flex-row gap-2 h-9 items-center">
+            <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
+                <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
+            </span>
+
+            <span class="flex flex-grow">
+                Creative and Branding
+            </span>
+
+        </button>
+    </div>
+</ng-template>

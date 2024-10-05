@@ -11,6 +11,7 @@ export class HomeComponent {
    *
    */
   constructor(private router: Router) {
+
     router.navigate(["/dashboard"]);
   }
 
