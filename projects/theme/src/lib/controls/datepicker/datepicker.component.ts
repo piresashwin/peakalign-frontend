@@ -1,7 +1,7 @@
 import { OverlayRef, Overlay, OverlayPositionBuilder } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ChangeDetectorRef, Component, ElementRef, forwardRef, Input, NgZone, ViewChild } from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
+import { ChangeDetectorRef, Component, ElementRef, forwardRef, input, Input, NgZone, Self, ViewChild } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl, ValidationErrors } from '@angular/forms';
 import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
 import { CalendarComponent } from '../calendar/calendar.component';
 
@@ -9,18 +9,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
   selector: 'theme-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrl: './datepicker.component.css',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatepickerComponent),
-      multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => DatepickerComponent),
-      multi: true
-    }
-  ]
+
 })
 export class DatepickerComponent {
 
@@ -28,6 +17,9 @@ export class DatepickerComponent {
   @ViewChild('container', { static: true }) container: ElementRef;
   @Input() minDate: Date;
   @Input() maxDate: Date;
+  @Input() label: string;
+  @Input() placeholder: string;
+  @Input() required: boolean;
 
   displayValue: string = '';
   value: Date | null = null;
@@ -38,13 +30,21 @@ export class DatepickerComponent {
   private onChange: (value: Date | null) => void = () => { };
   private onTouched: () => void = () => { };
 
+  get validationErrors() {
+    return {};
+  }
+
   constructor(
+    @Self() protected control: NgControl,
     private overlay: Overlay,
     private overlayPositionBuilder: OverlayPositionBuilder,
     private elementRef: ElementRef,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
-  ) { }
+  ) {
+    control.valueAccessor = this;
+  }
+
 
   writeValue(value: Date | null): void {
     this.value = value;

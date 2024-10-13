@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'button-gradient': 'linear-gradient(90deg, rgba(8, 69, 69, 1) 0%, rgba(24, 154, 147, 1) 100%)',
+      },
       fontFamily: {
         'nunito': ['Nunito', 'sans-serif'],
       },
@@ -31,6 +34,7 @@ module.exports = {
           600: "#D9DADB",
         },
         'neutral-2': {
+          50: "#E6E6E6",
           '100': "#B0B0B0",
           '200': "#8A8A8A",
         },

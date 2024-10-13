@@ -1,0 +1,7 @@
+<button [ngClass]="{'w-full justify-center': fullWidth}"
+    class="flex flex-row h-10 rounded-full border-0.5 border-neutral-2-50 bg-button-gradient gap-2 pl-2 pr-6 py-2 items-center">
+    <span *ngIf="icon" class="flex items-center justify-center bg-primary-50 bg-opacity-30 rounded-full p-2">
+        <img src="/assets/images/icons/{{icon}}.svg">
+    </span>
+    <span class="text-white text-sm">{{title}}</span>
+</button>

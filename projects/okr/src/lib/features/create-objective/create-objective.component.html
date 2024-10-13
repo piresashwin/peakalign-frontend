@@ -1,1 +1,101 @@
-<p>create-objective works!</p>
+<theme-drawer #drawer title="Create Objective" [autoClose]="false">
+
+    <ng-container body>
+
+        <div class="flex flex-col items-stretch" [formGroup]="objective">
+
+            <div class="flex flex-col w-full items-stretch gap-4">
+
+                <theme-radio-button-group [options]="objectiveLevels" formControlName="objectiveLevel">
+                    <ng-template #buttonTemplate let-option let-selectedKey="selectedKey"
+                        let-selectOption="selectOption">
+                        <button (click)="selectOption(option.key)" [ngClass]="{
+                            'bg-neutral-1-500 text-neutral-2-200': selectedKey !== option.key,
+                            'bg-button-gradient text-white': selectedKey == option.key
+                          }" class="px-4 py-2 rounded-full w-full focus:outline-none transition duration-150">
+                            {{ option.value }}
+                        </button>
+                    </ng-template>
+                </theme-radio-button-group>
+
+                <theme-input [required]="true" label="Objective" formControlName="title"
+                    placeholder="Enter your objective"></theme-input>
+
+                <theme-input type="textarea" label="Description" formControlName="description"
+                    placeholder="Enter your objective"></theme-input>
+
+                <theme-datepicker label="Deadline" formControlName="deadline"
+                    placeholder="Enter your Deadline"></theme-datepicker>
+
+                <theme-dropdown [required]="true" [options]="deadlineOptions" formControlName="deadlineLevel"
+                    label="Deadline Level" placeholder="Select Deadline Level">
+
+                    <ng-template #optionTemplate let-item>
+                        {{item.title}}
+                    </ng-template>
+
+                    <ng-template #valueTemplate let-selected let-displayValue>
+                        <ng-container *ngIf="selected.length == 0">
+                            Select Deadline Level
+                        </ng-container>
+
+                        <ng-container *ngFor="let item of getSelectedDeadlineItems(selected)">
+                            <ng-container *ngTemplateOutlet="option; context: {$implicit: item}"></ng-container>
+                        </ng-container>
+
+                    </ng-template>
+
+                </theme-dropdown>
+
+
+                <theme-dropdown [required]="true" [multiple]="true" [options]="ownerOptions" formControlName="owner"
+                    label="Owner" placeholder="Select Owner">
+
+                    <ng-template #optionTemplate let-item>
+                        {{item.title}}
+                    </ng-template>
+
+                    <ng-template #valueTemplate let-selected let-displayValue let-removeOption="removeOption">
+                        <ng-container *ngIf="selected.length == 0">
+                            Select Owner
+                        </ng-container>
+
+                        <ng-container *ngFor="let item of getSelectedOwnerItems(selected)">
+                            <ng-container
+                                *ngTemplateOutlet="ownerOption; context: {$implicit: item, removeOption: removeOption.bind(this)}"></ng-container>
+                        </ng-container>
+
+                    </ng-template>
+
+                </theme-dropdown>
+
+            </div>
+
+        </div>
+
+
+    </ng-container>
+
+    <ng-container footer>
+        <div class="flex w-full items-center">
+            <theme-button (click)="submit()" [fullWidth]="true" class="w-full" title="Create Objective"></theme-button>
+        </div>
+    </ng-container>
+
+</theme-drawer>
+
+<ng-template #ownerOption let-item let-removeOption="removeOption">
+    <div class="flex gap-2 py-0.5 px-3 h-9 rounded-full items-center justify-center text-sm bg-secondary-50">
+        {{item.title}}
+        <button (click)="removeOption(item)"
+            class="flex items-center justify-center w-5 h-5 bg-primary-500 rounded-full">
+            <img src="/assets/images/icons/close-white.svg">
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #option let-item>
+    <div class="flex gap-2 py-0.5 px-3 h-9  rounded-full items-center justify-center text-sm bg-secondary-50">
+        {{item.title}}
+    </div>
+</ng-template>

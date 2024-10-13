@@ -23,6 +23,7 @@ export class CalendarComponent {
   dateSelected = new Subject<Date>();
 
   ngOnInit() {
+    this.value = this.value || new Date();
     const currentDate = this.value || new Date();
     this.currentMonth = currentDate.getMonth();
     this.currentYear = currentDate.getFullYear();
@@ -84,6 +85,6 @@ export class CalendarComponent {
   }
 
   isSelected(date: Date | null): boolean {
-    return this.value != null && date != null && date.toDateString() === this.value.toDateString();
+    return this.value != null && date != null && date?.toDateString() === this.value?.toDateString();
   }
 }

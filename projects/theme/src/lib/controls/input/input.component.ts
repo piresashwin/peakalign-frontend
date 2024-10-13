@@ -36,7 +36,7 @@ export class InputComponent implements ControlValueAccessor {
   constructor(@Self() protected control: NgControl) {
     control.valueAccessor = this;
 
-    
+
   }
 
   writeValue(obj: any): void {

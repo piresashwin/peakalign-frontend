@@ -6,6 +6,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, Abst
 export interface DropdownOption {
   key: string | number;
   value: string;
+  [key: string]: any
 }
 
 @Component({
@@ -29,6 +30,7 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
   @Input() placeholder = 'Select an option';
   @Input() multiple = false;
   @Input() required = false;
+  @Input() label = "";
 
   @ViewChild('trigger') trigger!: ElementRef;
   @ViewChild('dropdownPanel') dropdownPanel!: TemplateRef<any>;
@@ -110,6 +112,7 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
   }
 
   onOptionClick(option: DropdownOption): void {
+    debugger
     if (this.multiple) {
       const index = this.selectedValues.indexOf(option.key);
       if (index > -1) {
@@ -137,5 +140,12 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
       .map(key => this.options.find(option => option.key === key)?.value)
       .filter(Boolean)
       .join(', ');
+  }
+
+  removeOption(key: any) {
+    const index = this.selectedValues.indexOf(key);
+
+    if (index)
+      this.selectedValues.splice(index, 1);
   }
 }

@@ -1,1 +1,36 @@
-<p>okr-management works!</p>
+<div class="flex flex-col justify-stretch w-full">
+
+    <div class="flex flex-row justify-between items-center px-6 mt-7">
+
+        <h1 class="text-2xl font-medium">Peak Align FY 24-25</h1>
+
+        <div class="flex flex-row items-center">
+            <theme-button (click)="openCreateOKR()" title="New OKR" icon="plus"></theme-button>
+        </div>
+
+    </div>
+
+    <div class="relative w-[300px] h-[300px] border border-primary-50 bg-primary-200" #c>
+        <div style="position: absolute;">Node 1</div>
+        <div style="position: absolute;">Node 2</div>
+        <div style="position: absolute;">Node 3</div>
+
+    </div>
+
+    <theme-js-plumb-canvas></theme-js-plumb-canvas>
+
+</div>
+
+
+<!-- Define templates for various node types -->
+<ng-template #defaultNode let-data>
+    <div class="default-node">
+        Default Node: {{ data.id }}
+    </div>
+</ng-template>
+
+<ng-template #specialNode let-data>
+    <div class="special-node">
+        Special Node: {{ data.id }}
+    </div>
+</ng-template>

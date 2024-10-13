@@ -25,9 +25,9 @@
       </div>
       <div *ngFor="let day of days" 
            class="text-center p-1 text-sm rounded-full cursor-pointer"
-           [class.bg-blue-500]="isSelected(day)"
+           [class.bg-primary-600]="isSelected(day)"
            [class.text-white]="isSelected(day)"
-           [class.hover:bg-blue-100]="!isDisabled(day) && !isSelected(day)"
+           [class.hover:bg-secondary-50]="!isDisabled(day) && !isSelected(day)"
            [class.text-gray-400]="isDisabled(day)"
            [class.cursor-not-allowed]="isDisabled(day)"
            (click)="selectDate(day)">

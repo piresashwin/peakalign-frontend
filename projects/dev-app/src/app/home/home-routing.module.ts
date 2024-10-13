@@ -16,10 +16,12 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+    title: 'Sign Up'
   },
   {
     path: 'signup/success',
     component: SignupSuccessComponent,
+    title: 'Sign Up - Success'
   },
   {
     path: 'dashboard',
@@ -28,7 +30,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent
+        component: DashboardComponent,
+        title: 'Dashboard'
       }
     ]
   },

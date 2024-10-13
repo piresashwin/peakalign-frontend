@@ -10,11 +10,24 @@ import { AlignmentVisualizationComponent } from './features/alignment-visualizat
 import { OkrListComponent } from './features/okr-list/okr-list.component';
 import { ObjectiveDetailsComponent } from './features/objective-details/objective-details.component';
 import { KeyresultDetailsComponent } from './features/keyresult-details/keyresult-details.component';
-import { ROUTE_TOKEN, SidebarMenu } from '@core';
+import { PeakCoreModule, ROUTE_TOKEN, SidebarMenu } from '@core';
 
 @NgModule({
-  declarations: [OKRComponent, OkrManagementComponent, CreateObjectiveComponent, CreateKeyresultComponent, AlignmentVisualizationComponent, OkrListComponent, ObjectiveDetailsComponent, KeyresultDetailsComponent],
-  imports: [CoreModule, ThemeSharedModule, OKRRoutingModule],
+  declarations: [
+    OKRComponent,
+    OkrManagementComponent,
+    CreateObjectiveComponent,
+    CreateKeyresultComponent,
+    AlignmentVisualizationComponent,
+    OkrListComponent,
+    ObjectiveDetailsComponent,
+    KeyresultDetailsComponent
+  ],
+  imports: [
+    CoreModule,
+    OKRRoutingModule,
+    PeakCoreModule
+  ],
   exports: [OKRComponent],
 })
 export class OKRModule {
@@ -22,7 +35,7 @@ export class OKRModule {
     return {
       ngModule: OKRModule,
       providers: [
-      
+
       ],
     };
   }

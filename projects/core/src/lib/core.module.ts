@@ -13,7 +13,7 @@ import { RouterModule } from "@angular/router";
     declarations: [
         HeaderComponent,
         SidebarComponent,
-        AppLayoutComponent
+        AppLayoutComponent,
     ],
     imports: [
         CommonModule,
@@ -31,7 +31,7 @@ import { RouterModule } from "@angular/router";
         FormsModule,
         ReactiveFormsModule,
         CdkMenuModule,
-        RouterModule
+        RouterModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

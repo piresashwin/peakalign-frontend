@@ -18,13 +18,20 @@
         </span>
     </label>
 
-    <div
-        class="flex flex-row items-center overflow-hidden gap-2.5 p-[14px] h-12 border-neutral-2-200 border-0.5 rounded-lg">
+    <div [ngClass]="{
+        'h-12' : type != 'textarea',
+        'h-auto': type == 'textarea'
+    }" class="flex flex-row items-center overflow-hidden gap-2.5 p-[14px] border-neutral-2-200 border-0.5 rounded-lg">
 
-        <input [type]="type"
+        <input *ngIf="type != 'textarea'" [type]="type"
             class="flex-1 outline-none w-full h-full placeholder:text-neutral-2-100 placeholder:text-sm" [id]="label"
             [placeholder]="placeholder" [required]="required" [disabled]="disabled" [value]="value"
             (input)="onInput($event)">
+
+        <textarea *ngIf="type == 'textarea'" rows="4"
+            class="flex-1 outline-none w-full h-full placeholder:text-neutral-2-100 placeholder:text-sm" [id]="label"
+            [placeholder]="placeholder" [required]="required" [disabled]="disabled" [value]="value"
+            (input)="onInput($event)"></textarea>
 
         <div class="flex" *ngIf="icon">
             icon

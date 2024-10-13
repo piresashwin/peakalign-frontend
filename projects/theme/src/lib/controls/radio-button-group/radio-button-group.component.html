@@ -1,0 +1,15 @@
+<div class="flex space-x-2 justify-evenly">
+    <ng-container *ngFor="let option of options">
+        <ng-container *ngIf="buttonTemplate; else defaultButton" [ngTemplateOutlet]="buttonTemplate"
+            [ngTemplateOutletContext]="{ $implicit: option, selectedKey: selectedKey,selectOption: selectOption.bind(this) }">
+        </ng-container>
+        <ng-template #defaultButton>
+            <button (click)="selectOption(option.key)" [ngClass]="{
+            'bg-blue-500 text-white': selectedKey === option.key,
+            'bg-gray-200 text-gray-700': selectedKey !== option.key
+          }" class="px-4 py-2 rounded-md focus:outline-none transition duration-150">
+                {{ option.value }}
+            </button>
+        </ng-template>
+    </ng-container>
+</div>

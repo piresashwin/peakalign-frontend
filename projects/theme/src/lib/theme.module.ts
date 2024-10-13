@@ -10,6 +10,10 @@ import { ToggleComponent } from './controls/toggle/toggle.component';
 import { DrawerComponent } from './controls/drawer/drawer.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ButtonComponent } from './controls/button/button.component';
+import { RadioButtonGroupComponent } from './controls/radio-button-group/radio-button-group.component';
+import { JsPlumbCanvasComponent } from './components/js-plumb-canvas/js-plumb-canvas.component';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 @NgModule({
   declarations: [
@@ -20,12 +24,16 @@ import { ModalComponent } from './components/modal/modal.component';
     ToggleComponent,
     DrawerComponent,
     LoaderComponent,
-    ModalComponent
+    ModalComponent,
+    ButtonComponent,
+    RadioButtonGroupComponent,
+    JsPlumbCanvasComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     OverlayModule,
+    CdkMenuModule
   ],
   exports: [
     InputComponent,
@@ -35,7 +43,10 @@ import { ModalComponent } from './components/modal/modal.component';
     ToggleComponent,
     DrawerComponent,
     LoaderComponent,
-    ModalComponent
+    ModalComponent,
+    ButtonComponent,
+    RadioButtonGroupComponent,
+    JsPlumbCanvasComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
