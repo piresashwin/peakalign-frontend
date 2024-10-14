@@ -11,6 +11,7 @@ import { OkrListComponent } from './features/okr-list/okr-list.component';
 import { ObjectiveDetailsComponent } from './features/objective-details/objective-details.component';
 import { KeyresultDetailsComponent } from './features/keyresult-details/keyresult-details.component';
 import { PeakCoreModule, ROUTE_TOKEN, SidebarMenu } from '@core';
+import { CreateSessionModalComponent } from './features/create-session-modal/create-session-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PeakCoreModule, ROUTE_TOKEN, SidebarMenu } from '@core';
     AlignmentVisualizationComponent,
     OkrListComponent,
     ObjectiveDetailsComponent,
-    KeyresultDetailsComponent
+    KeyresultDetailsComponent,
+    CreateSessionModalComponent
   ],
   imports: [
     CoreModule,

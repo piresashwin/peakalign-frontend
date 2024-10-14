@@ -1,12 +1,20 @@
-import { Component, Inject } from '@angular/core';
-import { ROUTE_TOKEN, SidebarMenu } from '@core';
+import { SubscriptionService } from '@abp/ng.core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ROUTE_TOKEN, SidebarMenu, UserDataService } from '@core';
+import { SessionDto, SessionsService } from '@proxy/okrs';
+import { CreateSessionModalComponent } from 'projects/okr/src/lib/features/create-session-modal/create-session-modal.component';
+import { DialogService } from 'projects/theme/src/lib/services/dialog.service';
+import { filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'pa-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+  styleUrl: './sidebar.component.scss',
+  providers: [SubscriptionService]
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+
+  isSessionAvailable = false;
 
   menus: SidebarMenu[] = [{
     title: "Menu",
@@ -70,11 +78,46 @@ export class SidebarComponent {
   }
   ]
 
+  sessions: SessionDto[] = [];
+
   /**
    *
    */
-  constructor() {
+  constructor(private dialogService: DialogService, private subscriptions: SubscriptionService
+    , private userDataService: UserDataService
+    , private sessionsService: SessionsService
+  ) {
 
+  }
+  ngOnInit(): void {
+    this.fetchSessions();
+  }
+
+
+  fetchSessions() {
+    const obs$ = this.userDataService.GlobalConfig$.pipe(
+      filter(x => x != null),
+      switchMap(x => {
+        return this.sessionsService.getList()
+      })
+    )
+
+    this.subscriptions.addOne(obs$, (response) => {
+      this.isSessionAvailable = !!response.length
+
+      this.sessions = response;
+    })
+  }
+
+
+  openNewSessionModal() {
+    const obs$ = this.dialogService.open(CreateSessionModalComponent, {
+      data: {}
+    }).pipe(filter(response => response != "cancel"))
+
+    this.subscriptions.addOne(obs$, (response) => {
+
+    })
   }
 
 }

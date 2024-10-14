@@ -1,0 +1,29 @@
+<theme-modal [open]="true" [autoClose]="false" [autoWidth]="false">
+
+    <ng-container header>
+        Create Session
+    </ng-container>
+
+    <ng-container body>
+        <div class="flex flex-col gap-2" [formGroup]="form">
+
+            <theme-input placeholder="Enter your session title" label="Title" formControlName="name"></theme-input>
+
+            <theme-input placeholder="Enter your session description" label="Description" type="textarea"
+                formControlName="description"></theme-input>
+
+            <theme-datepicker label="Start Date" formControlName="startDate"></theme-datepicker>
+            <theme-datepicker label="End Date" formControlName="endDate"></theme-datepicker>
+
+
+        </div>
+    </ng-container>
+
+    <ng-container footer>
+        <div class="flex flex-row items-center justify-stretch">
+
+            <theme-button [center]="true" [fullWidth]="true" title="Create Session" (click)="submit()"></theme-button>
+        </div>
+    </ng-container>
+
+</theme-modal>

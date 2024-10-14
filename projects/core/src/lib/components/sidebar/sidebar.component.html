@@ -9,7 +9,10 @@
 
     <img src="/assets/images/logo/logo.svg" class="h-8 w-auto flex self-start">
 
-    <button [cdkMenuTriggerFor]="teamMenu"
+    <theme-button (click)="openNewSessionModal()" *ngIf="!isSessionAvailable" title="Create Session" [center]="true"
+        [fullWidth]="true"></theme-button>
+
+    <button *ngIf="isSessionAvailable" [cdkMenuTriggerFor]="teamMenu"
         class="flex flex-row h-16 rounded-xl bg-neutral-1-200 border border-neutral-1-600 items-center p-3  gap-2">
 
         <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">

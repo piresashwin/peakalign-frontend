@@ -1,12 +1,15 @@
+import { SubscriptionService } from '@abp/ng.core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ObjectiveOwnerDto, OKRLevel, OKRsService, OwnerType } from 'projects/core/src/lib/proxy/okrs';
+import { UserDataService } from '@core';
+import { DeadlineType, OKRLevel, OKRsService, OwnerType } from '@proxy/okrs';
 
 @Component({
   selector: 'okr-create-objective',
   templateUrl: './create-objective.component.html',
-  styleUrl: './create-objective.component.css'
+  styleUrl: './create-objective.component.css',
+  providers: [SubscriptionService]
 })
 export class CreateObjectiveComponent {
 
@@ -17,7 +20,7 @@ export class CreateObjectiveComponent {
     description: new FormControl("", []),
     owner: new FormControl([], [Validators.required]),
     deadlineLevel: new FormControl('hard', [Validators.required]),
-    objectiveLevel: new FormControl('company', [Validators.required]),
+    objectiveLevel: new FormControl(OKRLevel.Company, [Validators.required]),
     deadline: new FormControl('', [Validators.required])
   })
 
@@ -64,10 +67,14 @@ export class CreateObjectiveComponent {
   /**
    *
    */
-  constructor(@Inject(DIALOG_DATA) protected data, private okrService: OKRsService) {
+  constructor(@Inject(DIALOG_DATA) protected data, private okrService: OKRsService, private subscriptions: SubscriptionService, private userDataService: UserDataService) {
 
     if (data.objective)
       this.isEditMode = false;
+
+    userDataService.GlobalConfig$.pipe(
+
+    )
 
   }
 
@@ -94,13 +101,25 @@ export class CreateObjectiveComponent {
     if (this.objective.invalid)
       return;
 
-    this.okrService.create({
+    let owners = form.owner?.map(x => this.ownerOptions.find(y => y.key == x)).map(x => ({ ownerId: x.key.toString(), objectiveId: null, ownerType: OwnerType[x.type] }))
+
+    const obs$ = this.okrService.create({
       okrLevel: form.objectiveLevel,
-      owners: form.owner.map(x => this.ownerOptions.find(y => y.key == x)).map(x => ({ ownerId: x.key as string, objectiveId: null, ownerType: x.type as OwnerType } as ObjectiveOwnerDto)),
+      owners: owners,
       description: form.description,
       title: form.title,
-      sessionId:
+      sessionId: null,
+      deadlineType: DeadlineType.Soft,
+      keyResults: [],
+      deadline: new Date().toDateString()
     })
+
+    this.subscriptions.addOne(obs$, (response) => {
+      
+    });
   }
+
+
+
 
 }

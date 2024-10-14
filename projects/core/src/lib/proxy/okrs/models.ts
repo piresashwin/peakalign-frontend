@@ -22,6 +22,13 @@ export interface CreateOKRDto {
   deadlineType: DeadlineType;
 }
 
+export interface CreateSessionDto {
+  name?: string;
+  startDate?: string;
+  endDate?: string;
+  description?: string;
+}
+
 export interface KeyResultDto {
   id?: string;
   title?: string;
@@ -46,6 +53,14 @@ export interface ObjectiveOwnerDto {
   objectiveId?: string;
   ownerId?: string;
   ownerType: OwnerType;
+}
+
+export interface SessionDto {
+  companyId?: string;
+  name?: string;
+  startDate?: string;
+  endDate?: string;
+  isActive: boolean;
 }
 
 export interface UpdateKeyResultDto {

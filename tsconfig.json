@@ -9,10 +9,10 @@
         "projects/okr/config/src/public-api.ts"
       ],
       "@proxy": [
-        "projects/okr/src/lib/proxy/index.ts"
+        "projects/core/src/lib/proxy/index.ts"
       ],
       "@proxy/*": [
-        "projects/okr/src/lib/proxy/*"
+        "projects/core/src/lib/proxy/*"
       ],
       "@theme": [
         "projects/theme/src/public-api.ts"

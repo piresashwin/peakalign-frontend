@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'theme-modal',
@@ -23,7 +23,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     ]),
   ],
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit {
   @Input()
   open = false;
 
@@ -33,8 +33,8 @@ export class ModalComponent {
   @Input()
   autoWidth: boolean = false;
 
-  @Output()
-  openChange = new EventEmitter();
+  @Input()
+  title: string = "";
 
   /**
    *
@@ -42,15 +42,11 @@ export class ModalComponent {
   constructor(private dialogRef: DialogRef) {
 
   }
+  ngOnInit(): void {
+    this.dialogRef.disableClose = !this.autoClose;
+  }
 
   close() {
-    if (this.autoClose) {
-      this.open = false;
-      setTimeout(() => {
-        this.openChange.emit(false);
-      }, 300);
-
-      this.dialogRef.close('cancel');
-    }
+    this.dialogRef.close("cancel");
   }
 }

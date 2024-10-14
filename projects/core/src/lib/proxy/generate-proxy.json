@@ -659,6 +659,291 @@
             }
           }
         },
+        "PeakAlign.OKR.OKRs.SessionsController": {
+          "controllerName": "Sessions",
+          "controllerGroupName": "Sessions",
+          "isRemoteService": true,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "PeakAlign.OKR.OKRs.SessionsController",
+          "interfaces": [
+            {
+              "type": "PeakAlign.OKR.OKRs.ISessionsAppService",
+              "name": "ISessionsAppService",
+              "methods": [
+                {
+                  "name": "GetAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "PeakAlign.OKR.OKRs.SessionDto",
+                    "typeSimple": "PeakAlign.OKR.OKRs.SessionDto"
+                  }
+                },
+                {
+                  "name": "GetListAsync",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<PeakAlign.OKR.OKRs.SessionDto>",
+                    "typeSimple": "[PeakAlign.OKR.OKRs.SessionDto]"
+                  }
+                },
+                {
+                  "name": "CreateAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "request",
+                      "typeAsString": "PeakAlign.OKR.OKRs.CreateSessionDto, PeakAlign.OKR.Application.Contracts",
+                      "type": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                      "typeSimple": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "PeakAlign.OKR.OKRs.SessionDto",
+                    "typeSimple": "PeakAlign.OKR.OKRs.SessionDto"
+                  }
+                },
+                {
+                  "name": "UpdateAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    },
+                    {
+                      "name": "request",
+                      "typeAsString": "PeakAlign.OKR.OKRs.CreateSessionDto, PeakAlign.OKR.Application.Contracts",
+                      "type": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                      "typeSimple": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "PeakAlign.OKR.OKRs.SessionDto",
+                    "typeSimple": "PeakAlign.OKR.OKRs.SessionDto"
+                  }
+                },
+                {
+                  "name": "DeleteAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Void",
+                    "typeSimple": "System.Void"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": {
+            "CreateAsyncByRequest": {
+              "uniqueName": "CreateAsyncByRequest",
+              "name": "CreateAsync",
+              "httpMethod": "POST",
+              "url": "api/okr/sessions",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "request",
+                  "typeAsString": "PeakAlign.OKR.OKRs.CreateSessionDto, PeakAlign.OKR.Application.Contracts",
+                  "type": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "typeSimple": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "request",
+                  "name": "request",
+                  "jsonName": null,
+                  "type": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "typeSimple": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "PeakAlign.OKR.OKRs.SessionDto",
+                "typeSimple": "PeakAlign.OKR.OKRs.SessionDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PeakAlign.OKR.OKRs.ISessionsAppService"
+            },
+            "DeleteAsyncById": {
+              "uniqueName": "DeleteAsyncById",
+              "name": "DeleteAsync",
+              "httpMethod": "DELETE",
+              "url": "api/okr/sessions/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PeakAlign.OKR.OKRs.ISessionsAppService"
+            },
+            "GetAsyncById": {
+              "uniqueName": "GetAsyncById",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/okr/sessions/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "PeakAlign.OKR.OKRs.SessionDto",
+                "typeSimple": "PeakAlign.OKR.OKRs.SessionDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PeakAlign.OKR.OKRs.ISessionsAppService"
+            },
+            "GetListAsync": {
+              "uniqueName": "GetListAsync",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/okr/sessions/all",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<PeakAlign.OKR.OKRs.SessionDto>",
+                "typeSimple": "[PeakAlign.OKR.OKRs.SessionDto]"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PeakAlign.OKR.OKRs.ISessionsAppService"
+            },
+            "UpdateAsyncByIdAndRequest": {
+              "uniqueName": "UpdateAsyncByIdAndRequest",
+              "name": "UpdateAsync",
+              "httpMethod": "PATCH",
+              "url": "api/okr/sessions/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "request",
+                  "typeAsString": "PeakAlign.OKR.OKRs.CreateSessionDto, PeakAlign.OKR.Application.Contracts",
+                  "type": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "typeSimple": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "request",
+                  "jsonName": null,
+                  "type": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "typeSimple": "PeakAlign.OKR.OKRs.CreateSessionDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "PeakAlign.OKR.OKRs.SessionDto",
+                "typeSimple": "PeakAlign.OKR.OKRs.SessionDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PeakAlign.OKR.OKRs.ISessionsAppService"
+            }
+          }
+        },
         "PeakAlign.OKR.Setup.CompanyController": {
           "controllerName": "Company",
           "controllerGroupName": "Company",
@@ -990,6 +1275,63 @@
         }
       ]
     },
+    "PeakAlign.OKR.OKRs.CreateSessionDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "StartDate",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "EndDate",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Description",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "PeakAlign.OKR.OKRs.DeadlineType": {
       "baseType": "System.Enum",
       "isEnum": true,
@@ -1264,6 +1606,75 @@
       ],
       "genericArguments": null,
       "properties": null
+    },
+    "PeakAlign.OKR.OKRs.SessionDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "CompanyId",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "StartDate",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "EndDate",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "IsActive",
+          "jsonName": null,
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
     },
     "PeakAlign.OKR.OKRs.UpdateKeyResultDto": {
       "baseType": null,
