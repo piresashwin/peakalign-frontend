@@ -241,7 +241,7 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "18.1.0"
 
-"@angular/animations@~18.1.0", "@angular/animations@18.1.5":
+"@angular/animations@>=12.0.0", "@angular/animations@~18.1.0", "@angular/animations@18.1.5":
   version "18.1.5"
   resolved "https://registry.npmjs.org/@angular/animations/-/animations-18.1.5.tgz"
   integrity sha512-TF9z6yRBLnSLkX15LmIj/VV09a1YgJ4EQjolYmtvO5rDF84YeCkwDiR2jj2V7LnuR2P9gT6MnqShu86pvi8xUg==
@@ -313,7 +313,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^17.0.0", "@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@>=11.0.2", "@angular/common@>=14.0.0", "@angular/common@>=5.0.0", "@angular/common@~18.1.0", "@angular/common@18.1.5":
+"@angular/common@^17.0.0", "@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@>=11.0.2", "@angular/common@>=12.0.0", "@angular/common@>=14.0.0", "@angular/common@>=5.0.0", "@angular/common@~18.1.0", "@angular/common@18.1.5":
   version "18.1.5"
   resolved "https://registry.npmjs.org/@angular/common/-/common-18.1.5.tgz"
   integrity sha512-YQhK12+A1pq+g+87lqHHmzhuNMQQTlHn1eXoYhiM47CRd/D/iwxagNABSbi8/UZyUzDY1AparIEUwmCntNrKUA==
@@ -341,7 +341,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^17.0.0", "@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@>=11.0.2", "@angular/core@>=14.0.0", "@angular/core@>=5.0.0", "@angular/core@~18.1.0", "@angular/core@18.1.5":
+"@angular/core@^17.0.0", "@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@>=11.0.2", "@angular/core@>=12.0.0", "@angular/core@>=14.0.0", "@angular/core@>=5.0.0", "@angular/core@~18.1.0", "@angular/core@18.1.5":
   version "18.1.5"
   resolved "https://registry.npmjs.org/@angular/core/-/core-18.1.5.tgz"
   integrity sha512-uhWZJlZ6zXm4nHwIgX9SVpbQuxxRvmgY8hoIVmMHAonuywvoxphUhpku4EGXZhFa024OBGlrLfBAhV7ZAb/MJA==
@@ -6095,6 +6095,13 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+ng-animate@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/ng-animate/-/ng-animate-2.0.1.tgz"
+  integrity sha512-ulXsBUYLLSBBypRenYFwqxOs0jvnJm5+TtiyOIhiau5+MOEK3n8o/WDdEeciicw8h8HocPAOvLg7XnDXqQW41w==
+  dependencies:
+    tslib "^2.3.0"
 
 ng-packagr@^18.0.0, ng-packagr@~18.1.0:
   version "18.1.0"

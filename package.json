@@ -30,6 +30,7 @@
     "@jsplumb/browser-ui": "^6.2.10",
     "gojs": "^3.0.12",
     "gojs-angular": "^2.0.8",
+    "ng-animate": "^2.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.14.0"

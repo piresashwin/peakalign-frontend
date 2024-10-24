@@ -31,6 +31,8 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
   @Input() multiple = false;
   @Input() required = false;
   @Input() label = "";
+  @Input() key = "key";
+  @Input() value = "value";
 
   @ViewChild('trigger') trigger!: ElementRef;
   @ViewChild('dropdownPanel') dropdownPanel!: TemplateRef<any>;
@@ -114,14 +116,14 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
   onOptionClick(option: DropdownOption): void {
     debugger
     if (this.multiple) {
-      const index = this.selectedValues.indexOf(option.key);
+      const index = this.selectedValues.indexOf(option[this.key]);
       if (index > -1) {
         this.selectedValues.splice(index, 1);
       } else {
-        this.selectedValues.push(option.key);
+        this.selectedValues.push(option[this.key]);
       }
     } else {
-      this.selectedValues = [option.key];
+      this.selectedValues = [option[this.key]];
       this.closeDropdown();
     }
     this.onChange(this.multiple ? this.selectedValues : this.selectedValues[0]);
@@ -129,7 +131,7 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
   }
 
   isSelected(option: DropdownOption): boolean {
-    return this.selectedValues.includes(option.key);
+    return this.selectedValues.includes(option[this.key]);
   }
 
   getDisplayValue(): string {
@@ -137,7 +139,7 @@ export class DropdownComponent implements ControlValueAccessor, Validator, After
       return this.placeholder;
     }
     return this.selectedValues
-      .map(key => this.options.find(option => option.key === key)?.value)
+      .map(key => this.options.find(option => option[this.key] === key)[this.value])
       .filter(Boolean)
       .join(', ');
   }

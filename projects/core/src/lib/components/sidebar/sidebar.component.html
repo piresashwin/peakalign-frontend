@@ -12,15 +12,19 @@
     <theme-button (click)="openNewSessionModal()" *ngIf="!isSessionAvailable" title="Create Session" [center]="true"
         [fullWidth]="true"></theme-button>
 
+    <div class="flex flex-row">
+        
+    </div>
+
     <button *ngIf="isSessionAvailable" [cdkMenuTriggerFor]="teamMenu"
-        class="flex flex-row h-16 rounded-xl bg-neutral-1-200 border border-neutral-1-600 items-center p-3  gap-2">
+        class="flex flex-row h-12 rounded-xl bg-neutral-1-200 border border-neutral-1-600 items-center p-3  gap-2">
 
         <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
-            <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
+            <img src="/assets/images/icons/session-dot.svg" class="w-5 h-5">
         </span>
 
         <span class="flex flex-grow">
-            2 Teams Managed
+            {{ currentSession?.name }}
         </span>
 
         <span class="">
@@ -64,29 +68,21 @@
 </div>
 
 <ng-template #teamMenu>
-    <div class="flex flex-col w-full p-3  bg-neutral-1-200  border border-neutral-1-600 shadow-md overflow-y-auto max-h-28 rounded-xl gap-2 mt-2"
+    <div class="flex flex-col self-stretch w-full p-3 bg-neutral-1-200  border border-neutral-1-600 shadow-md overflow-y-auto max-h-28 rounded-xl gap-2 mt-2"
         cdkMenu>
 
-        <button class="flex flex-row gap-2 h-9 items-center">
+        <button (click)="sessionChange(session)" *ngFor="let session of sessions"
+            class="flex w-full flex-row gap-2 h-9 items-center"
+            [ngClass]="{'bg-secondary-50 rounded-xl px-3' : selectedSessionKey == session.id}">
             <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
                 <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
             </span>
 
             <span class="flex flex-grow">
-                Human Resources
+                {{ session.name }}
             </span>
 
         </button>
 
-        <button class="flex flex-row gap-2 h-9 items-center">
-            <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
-                <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
-            </span>
-
-            <span class="flex flex-grow">
-                Creative and Branding
-            </span>
-
-        </button>
     </div>
 </ng-template>

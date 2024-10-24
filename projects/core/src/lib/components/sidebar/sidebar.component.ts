@@ -4,7 +4,7 @@ import { ROUTE_TOKEN, SidebarMenu, UserDataService } from '@core';
 import { SessionDto, SessionsService } from '@proxy/okrs';
 import { CreateSessionModalComponent } from 'projects/okr/src/lib/features/create-session-modal/create-session-modal.component';
 import { DialogService } from 'projects/theme/src/lib/services/dialog.service';
-import { filter, switchMap } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'pa-sidebar',
@@ -15,6 +15,8 @@ import { filter, switchMap } from 'rxjs';
 export class SidebarComponent implements OnInit {
 
   isSessionAvailable = false;
+
+  selectedSessionKey: string;
 
   menus: SidebarMenu[] = [{
     title: "Menu",
@@ -80,6 +82,8 @@ export class SidebarComponent implements OnInit {
 
   sessions: SessionDto[] = [];
 
+  globalConfig: any;
+
   /**
    *
    */
@@ -97,15 +101,19 @@ export class SidebarComponent implements OnInit {
   fetchSessions() {
     const obs$ = this.userDataService.GlobalConfig$.pipe(
       filter(x => x != null),
-      switchMap(x => {
+      switchMap(obj => {
         return this.sessionsService.getList()
+          .pipe(
+            map(x => x.map(x => ({ ...x, key: x.id }))),
+            map(x => ({ sessions: x, obj }))
+          )
       })
     )
 
-    this.subscriptions.addOne(obs$, (response) => {
-      this.isSessionAvailable = !!response.length
-
-      this.sessions = response;
+    this.subscriptions.addOne(obs$, ({ sessions, obj }) => {
+      this.isSessionAvailable = !!sessions.length
+      this.sessions = sessions;
+      this.selectedSessionKey = obj?.session?.id ?? this.sessions[0]?.id;
     })
   }
 
@@ -118,6 +126,14 @@ export class SidebarComponent implements OnInit {
     this.subscriptions.addOne(obs$, (response) => {
 
     })
+  }
+
+  get currentSession() {
+    return this.selectedSessionKey ? this.sessions.find(x => x.id == this.selectedSessionKey) : "";
+  }
+
+  sessionChange(session) {
+    this.selectedSessionKey = session.id;
   }
 
 }

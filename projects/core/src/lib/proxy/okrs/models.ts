@@ -1,6 +1,7 @@
 import type { OKRLevel } from './okrlevel.enum';
 import type { DeadlineType } from './deadline-type.enum';
 import type { OwnerType } from './owner-type.enum';
+import type { AuditedEntityDto } from '@abp/ng.core';
 
 export interface CreateKeyResultDto {
   title?: string;
@@ -55,7 +56,7 @@ export interface ObjectiveOwnerDto {
   ownerType: OwnerType;
 }
 
-export interface SessionDto {
+export interface SessionDto extends AuditedEntityDto<string> {
   companyId?: string;
   name?: string;
   startDate?: string;
