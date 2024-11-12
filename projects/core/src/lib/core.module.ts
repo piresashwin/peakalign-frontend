@@ -7,6 +7,8 @@ import { ThemeModule } from "@theme";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { RouterModule } from "@angular/router";
+import { UserProfileMenuComponent } from './ui/user-profile-menu/user-profile-menu.component';
+import { SessionsMenuComponent } from './ui/sessions-menu/sessions-menu.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { RouterModule } from "@angular/router";
         HeaderComponent,
         SidebarComponent,
         AppLayoutComponent,
+        UserProfileMenuComponent,
+        SessionsMenuComponent,
     ],
     imports: [
         CommonModule,

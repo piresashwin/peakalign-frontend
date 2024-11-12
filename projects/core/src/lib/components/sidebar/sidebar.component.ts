@@ -87,7 +87,7 @@ export class SidebarComponent implements OnInit {
   /**
    *
    */
-  constructor(private dialogService: DialogService, private subscriptions: SubscriptionService
+  constructor(private subscriptions: SubscriptionService
     , private userDataService: UserDataService
     , private sessionsService: SessionsService
   ) {
@@ -111,29 +111,7 @@ export class SidebarComponent implements OnInit {
     )
 
     this.subscriptions.addOne(obs$, ({ sessions, obj }) => {
-      this.isSessionAvailable = !!sessions.length
       this.sessions = sessions;
-      this.selectedSessionKey = obj?.session?.id ?? this.sessions[0]?.id;
     })
   }
-
-
-  openNewSessionModal() {
-    const obs$ = this.dialogService.open(CreateSessionModalComponent, {
-      data: {}
-    }).pipe(filter(response => response != "cancel"))
-
-    this.subscriptions.addOne(obs$, (response) => {
-
-    })
-  }
-
-  get currentSession() {
-    return this.selectedSessionKey ? this.sessions.find(x => x.id == this.selectedSessionKey) : "";
-  }
-
-  sessionChange(session) {
-    this.selectedSessionKey = session.id;
-  }
-
 }

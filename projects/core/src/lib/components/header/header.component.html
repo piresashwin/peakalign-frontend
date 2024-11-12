@@ -5,38 +5,18 @@
 
         <div class="flex items-center">
             <span class="w-10 h-10 flex items-center justify-center">
-
-                <img src="/assets/images/icons/dashboard.svg" class="w-5 h-5">
+                <img src="/assets/images/icons/dashboard.svg" class="w-5 h-5 filter-gray">
             </span>
 
-            <span class="text-sm">Dashboard</span>
+            <span class="text-sm text-neutral-2-300">Dashboard</span>
         </div>
 
 
 
     </div>
 
-    <div class="flex flex-row gap-2 items-center justify-end flex-row-reverse">
-
-        <button [cdkMenuTriggerFor]="profileMenu"
-            class="flex w-12 h-12 items-center justify-center bg-secondary-50 rounded-full">
-        </button>
-
-
-
-
+    <div class="flex gap-2 items-center justify-end flex-row-reverse">
+        <pa-user-profile-menu [user]="user"></pa-user-profile-menu>
     </div>
 
 </div>
-
-<ng-template #profileMenu>
-
-    <div class="flex flex-col bg-neutral-1-200 border border-neutral-1-600 rounded-md p-2 shadow-md mt-2 min-w-52">
-        Welcome, {{user?.name}}
-
-        <div class="flex flex-col">
-            <button class="flex flex-row h-10 items-center px-2" (click)="logout()">Logout</button>
-        </div>
-    </div>
-
-</ng-template>

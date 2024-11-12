@@ -9,31 +9,7 @@
 
     <img src="/assets/images/logo/logo.svg" class="h-8 w-auto flex self-start">
 
-    <theme-button (click)="openNewSessionModal()" *ngIf="!isSessionAvailable" title="Create Session" [center]="true"
-        [fullWidth]="true"></theme-button>
-
-    <div class="flex flex-row">
-        
-    </div>
-
-    <button *ngIf="isSessionAvailable" [cdkMenuTriggerFor]="teamMenu"
-        class="flex flex-row h-12 rounded-xl bg-neutral-1-200 border border-neutral-1-600 items-center p-3  gap-2">
-
-        <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
-            <img src="/assets/images/icons/session-dot.svg" class="w-5 h-5">
-        </span>
-
-        <span class="flex flex-grow">
-            {{ currentSession?.name }}
-        </span>
-
-        <span class="">
-            <span class="flex w-4 h-4 items-center justify-center">
-                <img src="/assets/images/icons/arrow-down.svg">
-            </span>
-        </span>
-
-    </button>
+    <pa-sessions-menu [sessions]="sessions"></pa-sessions-menu>
 
     <ng-container *ngFor="let menu of menus">
 
@@ -45,7 +21,7 @@
 
                 <ng-container *ngFor="let item of menu.items">
                     <a routerLink="{{item.url}}" class="cursor-pointer flex flex-row p-1 items-center h-12 rounded-xl"
-                        routerLinkActive="bg-secondary-50">
+                        routerLinkActive="active">
                         <span class="flex w-10 h-10 items-center justify-center">
                             <img src="/assets/images/icons/{{item.icon}}" class="w-5 h-5">
                         </span>
@@ -66,23 +42,3 @@
 
 
 </div>
-
-<ng-template #teamMenu>
-    <div class="flex flex-col self-stretch w-full p-3 bg-neutral-1-200  border border-neutral-1-600 shadow-md overflow-y-auto max-h-28 rounded-xl gap-2 mt-2"
-        cdkMenu>
-
-        <button (click)="sessionChange(session)" *ngFor="let session of sessions"
-            class="flex w-full flex-row gap-2 h-9 items-center"
-            [ngClass]="{'bg-secondary-50 rounded-xl px-3' : selectedSessionKey == session.id}">
-            <span class="flex w-10 h-10 rounded-full bg-secondary-50 items-center justify-center">
-                <img src="/assets/images/icons/hierarchy.svg" class="w-5 h-5">
-            </span>
-
-            <span class="flex flex-grow">
-                {{ session.name }}
-            </span>
-
-        </button>
-
-    </div>
-</ng-template>
